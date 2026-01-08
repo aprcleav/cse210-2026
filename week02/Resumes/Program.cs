@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Job job1 = new Job();
+        Job job1 = new Job(); // Instantiate new Job object and populate its variables
         job1._jobTitle = "Software Engineer";
         job1._company = "Microsoft";
         job1._startYear = 2010;
@@ -16,8 +16,7 @@ class Program
         job2._startYear = 2020;
         job2._endYear = 2026;
 
-        Resume myResume = new Resume();
-
+        Resume myResume = new Resume(); // Instantiate new Resume object and populate its variables
         myResume._name = "Harry Potter";
         myResume._jobs.Add(job1);
         myResume._jobs.Add(job2);
