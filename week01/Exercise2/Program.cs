@@ -8,8 +8,6 @@ class Program
         string userGrade = Console.ReadLine();
         int grade = int.Parse(userGrade);
         string letter = "";
-        string sign = "";
-        int lastDigit = grade % 10;
 
         // Finds letter grade
         if (grade >= 90)
@@ -34,29 +32,23 @@ class Program
         }
 
         // Determines if letter grade is + or -
+        int lastDigit = grade % 10;
+        string sign;
         if (lastDigit >= 7)
         {
-            if (letter == "A" || letter == "F")
-            {
-                sign = "";
-            }
-            else
-            {
-                sign = "+";
-            }
-        }
-        else if (lastDigit < 3 && grade != 100) 
-        {
-            if (letter == "F")
-            {
-                sign = "";
-            }
-            else
-            {
-                sign = "-";
-            }
+            sign = "+";
         }
         else
+        {
+            sign = "-";
+        }
+        
+        // Removes possibility of an A+, F+, or F- grade
+        if (grade >= 97)
+        {
+            sign = "";
+        }
+        if (grade < 60)
         {
             sign = "";
         }
