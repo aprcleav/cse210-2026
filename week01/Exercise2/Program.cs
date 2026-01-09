@@ -8,7 +8,7 @@ class Program
         string userGrade = Console.ReadLine();
         int grade = int.Parse(userGrade);
         string letter = "";
-        string sign;
+        string sign = "";
         int lastDigit = grade % 10;
 
         // Finds letter grade
@@ -45,7 +45,7 @@ class Program
                 sign = "+";
             }
         }
-        else if (lastDigit < 3)
+        else if (lastDigit < 3 && grade != 100) 
         {
             if (letter == "F")
             {
