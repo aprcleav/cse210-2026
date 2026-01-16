@@ -41,9 +41,9 @@ public class Fraction
         return _bottom = bottom;
     }
 
-    public void GetFractionString()
+    public string GetFractionString()
     {
-        Console.WriteLine($"{_top}/{_bottom}");
+        return $"{_top}/{_bottom}";
     }
     
     public double GetDecimalValue()
