@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 class Program
 {
@@ -19,6 +20,16 @@ class Program
         Fraction f4 = new Fraction(1,3);
         Console.WriteLine(f4.GetFractionString());
         Console.WriteLine(f4.GetDecimalValue());
+
+        f3.SetTop(5);
+        f3.SetBottom(9);
+        Console.WriteLine(f3.GetFractionString());
+        Console.WriteLine(f3.GetDecimalValue());
+
+        Console.WriteLine(f3.GetTop());
+        Console.WriteLine(f3.GetBottom());
+
+
 
     }
 }
