@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Transactions;
 
 public class Video
@@ -26,8 +27,19 @@ public class Video
         _comments.Add(c);
     }
 
+    public void DisplayComments()
+    {
+        foreach (Comment c in _comments)
+        {
+            c.DisplayComment();
+        }
+    }
+
     public void DisplayVideo()
     {
-        Console.WriteLine($"{_title} by {_author}\nLength: {_length} seconds\nComments: {NumberOfComments()}\n");
+        Console.WriteLine($"{_title} by {_author}\nLength: {_length} seconds\nComments: {NumberOfComments()}");
+        DisplayComments();
+        Console.WriteLine();
+
     }
 }
