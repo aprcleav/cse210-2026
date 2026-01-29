@@ -18,8 +18,8 @@ public class Product
         return _price * _quantity;
     }
 
-    public void DisplayProduct()
+    public string DisplayProduct()
     {
-        Console.WriteLine($"Product: {_name}, ID: {_id}");
+        return $"Product: {_name}, ID: {_id}";
     }
 }

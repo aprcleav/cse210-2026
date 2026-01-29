@@ -14,8 +14,8 @@ public class Customer
         return _address.InUSA();
     }
 
-    public void DisplayCustomer()
+    public string DisplayCustomer()
     {
-        Console.WriteLine($"{_name}\n{_address.DisplayAddress()}");
+        return $"{_name}\n{_address.DisplayAddress()}";
     }
 }

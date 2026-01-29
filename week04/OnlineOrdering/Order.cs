@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design.Serialization;
+using System.Diagnostics.CodeAnalysis;
 
 public class Order
 {
@@ -17,34 +18,38 @@ public class Order
         _products.Add(product);
     }
 
-    public void CalculateTotalCost()
+    public double CalculateTotalCost()
     {
-        // fix this method - logic issues. iteration is wrong.
-        double shipping;
+        double totalCost = 0;
+        int shippingCost;
+        
+        if (_customer.InUSA())
+        {
+            shippingCost = 5;
+        }
+        else
+        {
+            shippingCost = 35;
+        }
+
         foreach (Product p in _products)
         {
-            if (_customer.InUSA())
-            {
-                shipping = p.CalculateTotalCost() + 5;
-            }
-            else
-            {
-                shipping = p.CalculateTotalCost() + 35;
-            }
-            Console.WriteLine(shipping);
+            totalCost += p.CalculateTotalCost();
         }
+
+        return totalCost + shippingCost;
     }
 
     public void DisplayPackingLabel()
     {
         foreach (Product p in _products)
         {
-            p.DisplayProduct();
+            Console.WriteLine(p.DisplayProduct());
         }
     }
 
     public void DisplayShippingLabel()
     {
-        _customer.DisplayCustomer();
+        Console.WriteLine(_customer.DisplayCustomer());
     }
 }
