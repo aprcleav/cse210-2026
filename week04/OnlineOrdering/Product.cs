@@ -14,11 +14,13 @@ public class Product
     }
 
     public double CalculateTotalCost()
+    // Multiplies price by quantity to calculate total cost
     {
         return _price * _quantity;
     }
 
     public string DisplayProduct()
+    // Displays product name and ID
     {
         return $"Product: {_name}, ID: {_id}";
     }

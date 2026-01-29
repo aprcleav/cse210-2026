@@ -16,6 +16,7 @@ public class Address
     }
 
     public bool InUSA()
+    // returns true if country is USA or false if it is anything else
     {
         if (_country == "USA")
         {
@@ -28,6 +29,7 @@ public class Address
     }
 
     public string DisplayAddress()
+    // Display's the complete address as a string
     {
         return $"{_streetAddress}\n{_city}, {_stateOrProvince}\n{_country}\n";
     }

@@ -14,11 +14,13 @@ public class Order
     }
 
     public void AddProduct(Product product)
+    // Adds a product to the _products list
     {
         _products.Add(product);
     }
 
     public double CalculateTotalCost()
+    // Checks if customer country is USA. If true, it sets shipping to 5. If false, shipping is set to 35. Calculates total cost by adding the shipping value to the Product class's CalculateTotalCost() method
     {
         double totalCost = 0;
         int shippingCost;
@@ -41,6 +43,7 @@ public class Order
     }
 
     public void DisplayPackingLabel()
+    // iterates through each product in the _products list and display's each product name and ID via the Product class's DisplayProduct() method
     {
         foreach (Product p in _products)
         {
@@ -49,6 +52,7 @@ public class Order
     }
 
     public void DisplayShippingLabel()
+    // Calls Customer class's DisplayCustomer() method to display the customer's name and address
     {
         Console.WriteLine(_customer.DisplayCustomer());
     }
