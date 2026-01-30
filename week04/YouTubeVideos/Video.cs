@@ -39,7 +39,5 @@ public class Video
     {
         Console.WriteLine($"Video: {_title}\nAuthor: {_author}\nLength: {_length} seconds\nComments: {NumberOfComments()}");
         DisplayComments();
-        Console.WriteLine();
-
     }
 }

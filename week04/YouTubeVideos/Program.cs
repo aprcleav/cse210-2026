@@ -38,6 +38,7 @@ class Program
         foreach (Video v in videos)
         {
             v.DisplayVideo();
+            Console.WriteLine(new string('-', 40));
         }
 
 
