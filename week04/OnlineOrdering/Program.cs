@@ -20,12 +20,13 @@ class Program
         Console.WriteLine("\nSHIPPING LABEL: ");
         order1.DisplayShippingLabel();
 
-        Console.WriteLine($"Total Cost: ${order1.CalculateTotalCost()}\n");
+        Console.WriteLine($"Total Cost: ${order1.CalculateTotalCost()}");
+        Console.WriteLine(new string('-', 40));
 
         Console.WriteLine("ORDER 2: \n");
         Address address2 = new Address("2417 Burrard Ave", "Vanderhoof", "BC", "Canada");
         Customer customer2 = new Customer("Jonathan Doeser", address2);
-        Product p3 = new Product("iPad", 6005, 799.77, 1);
+        Product p3 = new Product("iPad", 6005, 799.99, 1);
         Product p4 = new Product("iPhone", 6007, 1299.99, 1);
         Product p5 = new Product("Airpods", 6009, 299.99, 1);
         Order order2 = new Order(customer2);
@@ -38,6 +39,7 @@ class Program
 
         Console.WriteLine("\nSHIPPING LABEL: ");
         order2.DisplayShippingLabel();
-        Console.WriteLine($"Total Cost: ${order2.CalculateTotalCost()}");
+        Console.WriteLine($"Total Cost: ${order2.CalculateTotalCost():F2}");
+        Console.WriteLine(new string('-', 40));
     }
 }

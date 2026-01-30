@@ -1,5 +1,4 @@
 using System;
-// I used encapsulation for this program as well because it feels weird not to use it now.
 
 class Program
 {

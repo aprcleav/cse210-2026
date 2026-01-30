@@ -14,7 +14,6 @@ public class Order
     }
 
     public void AddProduct(Product product)
-    // Adds a product to the _products list
     {
         _products.Add(product);
     }
@@ -43,17 +42,15 @@ public class Order
     }
 
     public void DisplayPackingLabel()
-    // iterates through each product in the _products list and display's each product name and ID via the Product class's DisplayProduct() method
     {
         foreach (Product p in _products)
         {
-            Console.WriteLine(p.DisplayProduct());
+            Console.WriteLine($"\t{p.DisplayProduct()}");
         }
     }
 
     public void DisplayShippingLabel()
-    // Calls Customer class's DisplayCustomer() method to display the customer's name and address
     {
-        Console.WriteLine(_customer.DisplayCustomer());
+        Console.WriteLine($"\t{_customer.DisplayCustomer()}");
     }
 }

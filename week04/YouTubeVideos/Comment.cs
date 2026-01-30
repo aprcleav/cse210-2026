@@ -11,6 +11,6 @@ public class Comment
 
     public void DisplayComment()
     {
-        Console.WriteLine($"{_name}: {_text}");
+        Console.WriteLine($"\t{_name}: {_text}");
     }
 }

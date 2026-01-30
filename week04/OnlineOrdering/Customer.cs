@@ -16,7 +16,6 @@ public class Customer
     }
 
     public string DisplayCustomer()
-    // Display's customer name and address
     {
         return $"{_name}\n{_address.DisplayAddress()}";
     }

@@ -18,7 +18,7 @@ public class Address
     public bool InUSA()
     // returns true if country is USA or false if it is anything else
     {
-        if (_country == "USA")
+        if (_country.Trim().ToUpper() == "USA")
         {
             return true;
         }
@@ -29,8 +29,7 @@ public class Address
     }
 
     public string DisplayAddress()
-    // Display's the complete address as a string
     {
-        return $"{_streetAddress}\n{_city}, {_stateOrProvince}\n{_country}\n";
+        return $"\t{_streetAddress}\n\t{_city}, {_stateOrProvince}\n\t{_country}\n";
     }
 }
