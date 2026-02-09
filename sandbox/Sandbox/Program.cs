@@ -5,18 +5,37 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello World! This is the Sandbox Project.");
-        Console.WriteLine("This is in C#.");
 
-        int number = 5;
+        HourlyEmployee h = new HourlyEmployee();
+        h.SetName("John");
+        h.SetIdNumber("123abc");
+        h.SetPayRate(15);
+        h.SetHoursWorked(35);
 
-        if (number > 3)
+        SalaryEmployee s = new SalaryEmployee();
+        s.SetName("Peter");
+        s.SetIdNumber("456def");
+        s.SetSalary(60000);
+
+        DisplayEmployeeInformation(h);
+        DisplayEmployeeInformation(s);
+
+        List<Employee> employees = new List<Employee>();
+        employees.Add(h);
+        employees.Add(s);
+
+        foreach (Employee e in employees)
         {
-            Console.WriteLine("greater");
+            float pay = e.GetPay();
         }
 
-        Console.Write("What is your favorite color?");
-        string color = Console.ReadLine();
-        Console.WriteLine($"Your favorite color is {color}.");
-        
+    }
+    
+    public static void DisplayEmployeeInformation(Employee employee)
+    {
+
+        float pay = employee.GetPay();
+        Console.WriteLine($"{employee.GetName()} will be paid ${pay}");
+
     }
 }
