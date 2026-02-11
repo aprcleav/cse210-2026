@@ -1,4 +1,4 @@
-// menu system and saving of points
+using System.Linq;
 public class GoalManager
 {
     private List<Goal> _goals;
@@ -150,18 +150,48 @@ public class GoalManager
         string filename = Console.ReadLine();
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
+            outputFile.WriteLine(_score);
             foreach (Goal g in _goals)
             {
-                outputFile.Write(ListGoalNames());
-                outputFile.Write(g.GetStringRepresentation());
+                outputFile.WriteLine(g.GetStringRepresentation());
             }
-            
+
         }
     }
     
     public void LoadGoals()
     // Loads the list of goals from a file.
     {
+        Console.Write("What is the filename for the goal file? ");
+        string filename = Console.ReadLine();
+        string[] lines = File.ReadAllLines(filename).Skip(1).ToArray();
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split("::");
+            string goalType = parts[0].Trim();
+            string name = parts[1];
+            string description = parts[2];
+            int points = int.Parse(parts[3]);
 
+            if (goalType == "Simple Goal")
+            {
+                SimpleGoal s1 = new SimpleGoal(name, description, points);
+                _goals.Add(s1);
+            }
+            else if (goalType == "Eternal Goal")
+            {
+                EternalGoal e1 = new EternalGoal(name, description, points);
+                _goals.Add(e1);
+            }
+            else if (goalType == "Checklist Goal")
+            {
+                int bonus = int.Parse(parts[4]);
+                int target = int.Parse(parts[5]);
+                int completed = int.Parse(parts[6]);
+                ChecklistGoal c1 = new ChecklistGoal(name, description, points, target, bonus);
+                c1.SetAmountCompleted(completed);
+                _goals.Add(c1);
+            }
+        }
     }
 }

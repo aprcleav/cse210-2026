@@ -18,6 +18,6 @@ public class EternalGoal : Goal
     public override string GetStringRepresentation()
     // This method should provide all of the details of a goal in a way that is easy to save to a file, and then load later.
     {
-        return $"Simple Goal:\t{GetName()}\t{GetDescription()}\t{GetPoints()}";
+        return $"Eternal Goal::{GetName()}::{GetDescription()}::{GetPoints()}";
     }
 }

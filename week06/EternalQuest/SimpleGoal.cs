@@ -17,12 +17,19 @@ public class SimpleGoal : Goal
 
     public override bool IsComplete()
     {
-       return _isComplete = true;
+        if (_isComplete == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public override string GetStringRepresentation()
     // This method should provide all of the details of a goal in a way that is easy to save to a file, and then load later.
     {
-        return $"Simple Goal:\t{GetName()}\t{GetDescription()}\t{GetPoints()}\t{_isComplete}";
+        return $"Simple Goal::{GetName()}::{GetDescription()}::{GetPoints()}::{_isComplete}";
     }
 }

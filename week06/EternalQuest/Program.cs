@@ -7,6 +7,9 @@ class Program
         GoalManager goalManager = new GoalManager();
         goalManager.Start();
         
+        // ToDo:
+        // Work on RecordEvent() methods
+        // Remove any dead code
 
         
     }

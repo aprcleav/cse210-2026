@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 public class ChecklistGoal : Goal
 {
     private int _amountCompleted;
@@ -9,6 +11,11 @@ public class ChecklistGoal : Goal
         _target = target;
         _bonus = bonus;
         _amountCompleted = 0;
+    }
+
+    public void SetAmountCompleted(int completed)
+    {
+        _amountCompleted = completed;
     }
 
     public override void RecordEvent()
@@ -38,13 +45,13 @@ public class ChecklistGoal : Goal
         }
         else
         {
-            return $"[ ] {GetName()} ({GetDescription}) -- Currently completed: {_amountCompleted}/{_target}";
+            return $"[ ] {GetName()} ({GetDescription()}) -- Currently completed: {_amountCompleted}/{_target}";
         }
     }
 
     public override string GetStringRepresentation()
     // This method should provide all of the details of a goal in a way that is easy to save to a file, and then load later.
     {
-        return $"Simple Goal:\t{GetName()}\t{GetDescription()}\t{GetPoints()}\t{_bonus}\t{_target}\t{_amountCompleted}";
+        return $"Checklist Goal::{GetName()}::{GetDescription()}::{GetPoints()}::{_bonus}::{_target}::{_amountCompleted}";
     }
 }
