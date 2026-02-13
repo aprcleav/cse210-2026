@@ -67,18 +67,8 @@ public class GoalManager
         Console.WriteLine($"\nYou have {_score} points.\n");
     }
 
-    public string ListGoalNames()
-    // Lists the names of each of the goals.
-    {
-        foreach (Goal g in _goals)
-        {
-            return $"{g}: ";
-        }
-        return "";
-    }
-
     public void ListGoalDetails()
-    // Lists the details of each goal (including the checkbox of whether it is complete).
+    // Lists the details of each goal by calling each goal's GetDetailString() method.
     {
         int count = 0;
 
@@ -140,6 +130,20 @@ public class GoalManager
     public void RecordEvent()
     // Asks the user which goal they have done and then records the event by calling the RecordEvent method on that goal.
     {
+        ListGoalDetails();
+        Console.Write("Which goal did you accomplish? ");
+        int doneGoal = int.Parse(Console.ReadLine());
+
+        Goal selected = _goals[doneGoal - 1];
+        selected.RecordEvent();
+
+        _score += selected.GetPoints();
+
+        if (selected.IsComplete())
+        {
+            Console.WriteLine($"Congratulations! You have earned {selected.GetPoints()} points!");
+        }
+        Console.WriteLine($"You now have {_score} total points.");
         
     }
 
@@ -160,10 +164,14 @@ public class GoalManager
     }
     
     public void LoadGoals()
-    // Loads the list of goals from a file.
+    // Loads the list of goals from a file. Sets first line as the score, then iterates through remaining lines and sets their values based on their goal type.
     {
         Console.Write("What is the filename for the goal file? ");
         string filename = Console.ReadLine();
+        string[] pointCount = File.ReadAllLines(filename);   
+        int score = int.Parse(pointCount[0]);
+        _score = score;
+        
         string[] lines = File.ReadAllLines(filename).Skip(1).ToArray();
         foreach (string line in lines)
         {
@@ -175,7 +183,9 @@ public class GoalManager
 
             if (goalType == "Simple Goal")
             {
+                string isComplete = parts[4];
                 SimpleGoal s1 = new SimpleGoal(name, description, points);
+                s1.SetComplete(Convert.ToBoolean(isComplete));
                 _goals.Add(s1);
             }
             else if (goalType == "Eternal Goal")

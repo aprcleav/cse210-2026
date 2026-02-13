@@ -1,4 +1,4 @@
-0
+1300
 Simple Goal::make dinner::make sloppy joes for diner::50::True
 Eternal Goal::pray::pray every morning and night::50
-Checklist Goal::walk dog::Take Sadie for 1 mile walk::50::1000::5::0
+Checklist Goal::walk dog::Take Sadie for 1 mile walk::1050::1000::3::3

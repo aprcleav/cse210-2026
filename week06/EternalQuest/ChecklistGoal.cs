@@ -19,12 +19,28 @@ public class ChecklistGoal : Goal
     }
 
     public override void RecordEvent()
-    // This method should do whatever is necessary for each specific kind of goal, such as marking a simple goal complete and adding to the number of times a checklist goal has been completed. It should return the point value associated with recording the event (keep in mind that it may contain a bonus in some cases if a checklist goal was just finished, for example).
+    // Records the amount completed and awards bonus points if completed the target number of times. 
     {
+        _amountCompleted++;
+        if (_amountCompleted == _target)
+        {
+            int points = GetPoints();
+            Console.WriteLine($"You got a bonus of {_bonus} points!");
+            points += _bonus;
+            SetPoints(points);
+        }
+        else if (_amountCompleted > _target)
+        // Keeps user from getting extra bonus points if they try to complete the goal more than the set number of times and encourages them to set a new goal.
+        {
+            Console.WriteLine("\nYou already completed this goal. Time to set a new one!");
+            SetPoints(0);
+            _amountCompleted--;
+        }
 
     }
 
     public override bool IsComplete()
+    // Returns true if the user completed the goal the target number of times
     {
         if (_amountCompleted == _target)
         {
@@ -37,7 +53,7 @@ public class ChecklistGoal : Goal
     }
 
     public override string GetDetailString()
-    // This method should return the details of a goal that could be shown in a list. It should include the checkbox, the short name, and description. Then in the case of the ChecklistGoal class, it should be overridden to shown the number of times the goal has been accomplished so far.
+    // Returns the all the details for the ChecklistGoal class as a string
     {
         if (IsComplete())
         {
@@ -50,7 +66,7 @@ public class ChecklistGoal : Goal
     }
 
     public override string GetStringRepresentation()
-    // This method should provide all of the details of a goal in a way that is easy to save to a file, and then load later.
+    // Provides all of the details of a goal in a way that is easy to save to a file, and then load later.
     {
         return $"Checklist Goal::{GetName()}::{GetDescription()}::{GetPoints()}::{_bonus}::{_target}::{_amountCompleted}";
     }

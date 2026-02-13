@@ -5,18 +5,19 @@ public class EternalGoal : Goal
         
     }
     public override void RecordEvent()
-    // This method should do whatever is necessary for each specific kind of goal, such as marking a simple goal complete and adding to the number of times a checklist goal has been completed. It should return the point value associated with recording the event (keep in mind that it may contain a bonus in some cases if a checklist goal was just finished, for example).
+    // Tells the user how many points they've earned without setting the goal as complete
     {
-
+        Console.WriteLine($"Congratulations! You have earned {GetPoints()} points!");
     }
 
     public override bool IsComplete()
+    // Stays set to false for eternal goals so they don't get checked off
     {
         return false;
     }
 
     public override string GetStringRepresentation()
-    // This method should provide all of the details of a goal in a way that is easy to save to a file, and then load later.
+    // Provides all of the details of a goal in a way that is easy to save to a file, and then load later.
     {
         return $"Eternal Goal::{GetName()}::{GetDescription()}::{GetPoints()}";
     }

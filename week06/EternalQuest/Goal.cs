@@ -36,15 +36,15 @@ public abstract class Goal
         return _points;
     }
 
-    public void SetPoints(string points)
+    public void SetPoints(int points)
     {
-        _shortName = points;
+        _points = points;
     }
 
     public abstract void RecordEvent();
     public abstract bool IsComplete();
     public virtual string GetDetailString()
-    // This method should return the details of a goal that could be shown in a list. It should include the checkbox, the short name, and description.
+    // Shows checkbox and goal name with description. Checkbox is marked complete if goal has been completed.
     {
         if (!IsComplete())
         {
